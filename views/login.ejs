@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Login</title>
+</head>
+<body>
+    <%- include('partials/navbar-logo.ejs') %>
+
+    <div class="jumbotron">
+            <h1>Login</h1>
+            <% if (err) { %>
+            <div class="alert alert-danger" role="alert">
+                <%= "The password that you've entered is incorrect." %>
+            </div>
+            <% } %>
+            <p style="color: gray;">Please fill in this form to create an account.</p>
+            <hr>
+        <form method="POST" action="/login">
+            <div class="form-group">
+                <label for="uname">Username</label>
+                <input autofocus type="text" placeholder="Enter username" class="form-control" name="username" required id="exampleInputEmail1" aria-describedby="emailHelp">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your username with anyone else.</small>
+            </div>
+            <div class="form-group">
+                <label for="psw">Password</label>
+                <input type="password" placeholder="Enter password" name="password" required class="form-control" id="exampleInputPassword1">
+            </div>
+            <div>
+                <p>Don't have an account? <a href="/register">Sign up</a>.</p>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+<%- include('partials/footer.ejs') %>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/public/stylesheets/style.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+    <%- include('partials/navbar-logo-login.ejs') %>
+    <div class="jumbotron">
+        <div class="container">
+            <% if (err) { %>
+                <div class="alert alert-danger" role="alert">
+                    <%= (err) %>
+                </div>
+            <% } %>
+            <div class="media">
+                <img style="padding-top: 20px; width: 200px;" class="mr-3" src="<%= movie.poster %>">
+                <div class="media-body">
+                    <br><h1>Write your review for <a style="color: black;" href="/movies/<%= movie.dataValues.id %>"><%= movie.dataValues.title %></a></h1><br>
+                </div>
+            </div>
+            <form action="/reviews/<%= review.dataValues.id %>/edit" method="POST">
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1">Rating</label>
+                        <select autofocus name="rating" class="form-control" id="exampleFormControlSelect1">
+                            <option disable>1 - 10</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Brief Description</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="reviewTitle" value="<%= review.dataValues.reviewTitle %>">
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1">Your Comment</label>
+                    <textarea style="height: 250px;" name="description" placeholder="What do you think about the movie?" class="form-control" id="exampleFormControlTextarea1" rows="3"><%= review.dataValues.description %></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+<%- include('partials/footer.ejs') %>

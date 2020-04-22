@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Home</title>
+</head>
+<body>
+    <%- include('partials/navbar-home.ejs') %>
+    <div class="jumbotron">
+
+        
+        <div class="container">
+            <h1><img style="width: 150px;" src="https://a.ltrbxd.com/logos/letterboxd-mac-icon.png">
+                Letter Box : Ratings and Reviews for Movies
+            </h1>
+            <br>
+
+            <!-- List Movies -->
+            <p  padding-top: 10px;">Review Your Favorite Movie</p>
+            <div class="bs-example">
+                <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                <!-- Carousel indicators -->
+                <ol class="carousel-indicators">
+                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#myCarousel" data-slide-to="1"></li>
+                    <li data-target="#myCarousel" data-slide-to="2"></li>
+                </ol>
+                <!-- Wrapper for carousel items -->
+                <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <a href="/movies/<%= dataMovies[2].id%>">
+                        <img src="<%= dataMovies[2].poster %>" alt="First Slide" width="180" height="250">
+                    </a>
+                    <a href="/movies/<%= dataMovies[1].id%>">
+                        <img src="<%= dataMovies[1].poster %>" alt="First Slide" width="180" height="250">
+                    </a>
+                    <a href="/movies/<%= dataMovies[3].id%>">
+                        <img src="<%= dataMovies[3].poster %>" alt="First Slide" width="180" height="250">
+                    </a>
+                    <a href="/movies/<%= dataMovies[20].id%>">
+                        <img src="<%= dataMovies[20].poster %>" alt="First Slide" width="180" height="250">
+                    </a>
+                    <a href="/movies/<%= dataMovies[24].id%>">
+                        <img src="<%= dataMovies[24].poster %>" alt="First Slide" width="180" height="250">
+                    </a>
+                    <a href="/movies/<%= dataMovies[9].id%>">
+                        <img src="<%= dataMovies[9].poster %>" alt="First Slide" width="180" height="250">
+                    </a>
+                </div>
+    
+                <div class="carousel-item">
+                    <a href="/movies/<%= dataMovies[23].id%>">
+                        <img src="<%= dataMovies[23].poster %>" alt="Second Slide" width="180" height="250">
+                    </a>
+                    <a href="/movies/<%= dataMovies[10].id%>">
+                        <img src="<%= dataMovies[10].poster %>" alt="Second Slide" width="180" height="250">
+                    </a>
+                    <a href="/movies/<%= dataMovies[40].id%>">
+                        <img src="<%= dataMovies[40].poster %>" alt="Second Slide" width="180" height="250">
+                    </a>
+                    <a href="/movies/<%= dataMovies[11].id%>">
+                        <img src="<%= dataMovies[11].poster %>" alt="Second Slide" width="180" height="250">
+                    </a>
+                    <a href="/movies/<%= dataMovies[13].id%>">
+                        <img src="<%= dataMovies[13].poster %>" alt="Second Slide" width="180" height="250">
+                    </a>
+                    <a href="/movies/<%= dataMovies[20].id%>">
+                        <img src="<%= dataMovies[20].poster %>" alt="Second Slide" width="180" height="250">
+                    </a>
+                </div>
+    
+                <div class="carousel-item">
+                    <a href="/movies/<%= dataMovies[29].id%>">
+                        <img src="<%= dataMovies[29].poster %>" alt="Third Slide" width="180" height="250">
+                    </a>
+                    <a href="/movies/<%= dataMovies[35].id%>">
+                        <img src="<%= dataMovies[35].poster %>" alt="Third Slide" width="180" height="250">
+                    </a>
+                    <a href="/movies/<%= dataMovies[42].id%>">
+                        <img src="<%= dataMovies[42].poster %>" alt="Third Slide" width="180" height="250">
+                    </a>
+                    <a href="/movies/<%= dataMovies[45].id%>">
+                        <img src="<%= dataMovies[45].poster %>" alt="Third Slide" width="180" height="250">
+                    </a>
+                    <a href="/movies/<%= dataMovies[43].id%>">
+                        <img src="<%= dataMovies[43].poster %>" alt="Third Slide" width="180" height="250">
+                    </a>
+                    <a href="/movies/<%= dataMovies[10].id%>">
+                        <img src="<%= dataMovies[10].poster %>" alt="Third Slide" width="180" height="250">
+                    </a>
+                </div>
+                </div>
+    
+                <!-- Carousel controls -->
+                <a class="carousel-control-prev" href="#myCarousel" data-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </a>
+                <a class="carousel-control-next" href="#myCarousel" data-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- footer -->
+    <%- include('partials/footer.ejs') %>
