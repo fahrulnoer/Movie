@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link href="/public/stylesheets/style.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>Show Movie Review</title>
 </head>
+
 <body>
     <%- include('partials/navbar-logo-login.ejs') %>
     <div class="jumbotron">
@@ -17,7 +19,7 @@
                 <div class="col" style="text-align: center">
                     <img id="poster" src="<%= movie.poster %>"><br>
                     <p style="font-size: 40px;"> <%= movie.dataValues.averageRating.toFixed(1) %>/10 </p>
-        
+
                 </div>
                 <div style="font-size: 12px;" class="col">
                     <a style="font-size: 20px; color: black;" href='/movies/<%= movie.id %>'><%= movie.title %>
@@ -34,66 +36,71 @@
                 </div>
             </div>
             <% if(!loggedUserReview) { %>
-                <div style="text-align: center; padding-top: 50px; margin-bottom: 10px;">
-                    <button type="button" class="btn btn-primary"
-                    onclick="window.location.href='/movies/<%= movie.dataValues.id %>/add-review'">Review This Movie</button>
-                </div>
+            <div style="text-align: center; padding-top: 50px; margin-bottom: 10px;">
+                <button type="button" class="btn btn-primary"
+                    onclick="window.location.href='/movies/<%= movie.dataValues.id %>/add-review'">Review This
+                    Movie</button>
+            </div>
             <% } %>
             <% if(loggedUserReview) { %>
             <div class="card">
-            <h5 class="card-header"><%= loggedUserReview.dataValues.rating %>/10
-                <% for(let i = 0; i < loggedUserReview.dataValues.rating; i++) { %>
-                <img src="https://www.flaticon.com/premium-icon/icons/svg/2217/2217684.svg" style="width: 25px;">
-                <% } %>
-            </h5>
-            <div style="color: black;" class="card-body">
-                <h5 class="card-title">
-                    <%= loggedUserReview.dataValues.reviewTitle %><br>
-                    Your Review - <%= getFormattedDate(loggedUserReview.dataValues.updatedAt) %>
+                <h5 class="card-header"><%= loggedUserReview.dataValues.rating %>/10
+                    <% for(let i = 0; i < loggedUserReview.dataValues.rating; i++) { %>
+                    <img src="https://www.flaticon.com/premium-icon/icons/svg/2217/2217684.svg" style="width: 25px;">
+                    <% } %>
                 </h5>
-                <p class="card-text"><%= loggedUserReview.dataValues.description %></p>
-                <button type="button" class="btn btn-info"
-                    onclick="window.location.href='/movies/<%= movie.dataValues.id %>/edit-review'">Edit</button>
-                <button type="button" class="btn btn-danger"
-                    onclick="window.location.href='/reviews/<%= loggedUserReview.dataValues.id %>/delete'">Delete</button>
-            </div>
-            <% movie.dataValues.Reviews.forEach(review => { %>
-            <% if(review.dataValues.id !== loggedUserReview.dataValues.id) { %>
-            <div class="card">
-                <h5 class="card-header"><%= review.dataValues.rating %>/10
-                    <% for(let i = 0; i < review.dataValues.rating; i++) { %>
-                    <img src="https://www.flaticon.com/premium-icon/icons/svg/2217/2217684.svg"
-                    style="width: 25px;">
-                    <% } %></h5>
                 <div style="color: black;" class="card-body">
                     <h5 class="card-title">
-                    <%= review.dataValues.reviewTitle %><br>
-                    <%= review.dataValues.User.username%> - <%= getFormattedDate(review.dataValues.updatedAt) %>
+                        <%= loggedUserReview.dataValues.reviewTitle %><br>
+                        Your Review - <%= getFormattedDate(loggedUserReview.dataValues.updatedAt) %>
                     </h5>
-                    <p class="card-text"><%= review.dataValues.description %></p>
+                    <p class="card-text"><%= loggedUserReview.dataValues.description %></p>
+                    <button type="button" class="btn btn-info"
+                        onclick="window.location.href='/movies/<%= movie.dataValues.id %>/edit-review'">Edit</button>
+                    <button type="button" class="btn btn-danger"
+                        onclick="window.location.href='/reviews/<%= loggedUserReview.dataValues.id %>/delete'">Delete</button>
+                </div>
+                <% movie.dataValues.Reviews.forEach(review => { %>
+                <% if(review.dataValues.id !== loggedUserReview.dataValues.id) { %>
+                <div class="card">
+                    <h5 class="card-header"><%= review.dataValues.rating %>/10
+                        <% for(let i = 0; i < review.dataValues.rating; i++) { %>
+                        <img src="https://www.flaticon.com/premium-icon/icons/svg/2217/2217684.svg"
+                            style="width: 25px;">
+                        <% } %></h5>
+                    <div style="color: black;" class="card-body">
+                        <h5 class="card-title">
+                            <%= review.dataValues.reviewTitle %><br>
+                            <%= review.dataValues.User.username%> - <%= getFormattedDate(review.dataValues.updatedAt) %>
+                        </h5>
+                        <p class="card-text"><%= review.dataValues.description %></p>
 
+                    </div>
                 </div>
-            </div>
-            <% } %>
-            <% }) %>
-            <% } else { %>
-            <% movie.dataValues.Reviews.forEach(review => { %>
-            <div class="card">
-                <h5 class="card-header"><%= review.dataValues.rating %>/10
-                    <% for(let i = 0; i < review.dataValues.rating; i++) { %>
-                    <img src="https://www.flaticon.com/premium-icon/icons/svg/2217/2217684.svg"
-                    style="width: 25px;">
-                    <% } %></h5>
-                <div style="color: black;" class="card-body">
-                    <h5 class="card-title">
-                    <%= review.dataValues.reviewTitle %><br>
-                    <%= review.dataValues.User.username%> - <%= getFormattedDate(review.dataValues.updatedAt) %>
-                    </h5>
-                    <p class="card-text"><%= review.dataValues.description %></p>
+                <% } %>
+                <% }) %>
+                <% } else { %>
+                <% movie.dataValues.Reviews.forEach(review => { %>
+                <div class="card">
+                    <h5 class="card-header"><%= review.dataValues.rating %>/10
+                        <% for(let i = 0; i < review.dataValues.rating; i++) { %>
+                        <img src="https://www.flaticon.com/premium-icon/icons/svg/2217/2217684.svg"
+                            style="width: 25px;">
+                        <% } %></h5>
+                    <div style="color: black;" class="card-body">
+                        <h5 class="card-title">
+                            <%= review.dataValues.reviewTitle %><br>
+                            <%= review.dataValues.User.username%> - <%= getFormattedDate(review.dataValues.updatedAt) %>
+                        </h5>
+                        <p class="card-text"><%= review.dataValues.description %></p>
+                    </div>
                 </div>
+                <% }) %>
+                <% } %>
             </div>
-            <% }) %>
-            <% } %>
+
+            <div style="text-align: center; padding-top: 50px; margin-bottom: 10px;"></div>
+            <a href="/"><button type="button" class="btn btn-primary">Back</button></a>
         </div>
     </div>
-<%- include('partials/footer.ejs') %>
+    <%- include('partials/footer.ejs') %>

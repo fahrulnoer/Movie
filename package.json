@@ -14,9 +14,10 @@
     "bcrypt": "^3.0.8",
     "ejs": "^2.7.4",
     "express": "^4.17.1",
-    "express-session": "^1.17.0",
+    "express-session": "^1.17.1",
     "imdb-api": "^4.0.3",
     "pg": "^7.18.2",
-    "sequelize": "^5.21.5"
+    "sequelize": "^5.21.7",
+    "sequelize-cli": "^5.5.1"
   }
 }
