@@ -10,10 +10,10 @@ module.exports = (sequelize, DataTypes) => {
 
   User.init({
     username: {
-      type: Sequelize.STRING, validate: { notEmpty: true }
+      type: Sequelize.STRING, validate: { notEmpty: { args: true ,  msg: "Please Fill in your Username!"} }
     },
     password: {
-      type: Sequelize.STRING, validate: { notEmpty: true }
+      type: Sequelize.STRING, validate: { notEmpty: {args : true , msg: "Please Fill in your Password!"}}
     }
   }, {
     sequelize,
