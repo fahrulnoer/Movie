@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="img/favicon.ico"/>
     <link href="/public/stylesheets/style.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -20,7 +21,7 @@
             <div class="media">
                 <img style="padding-top: 20px; width: 200px;" class="mr-3" src="<%= movie.poster %>">
                 <div class="media-body">
-                    <br><h1>Write your review for <a style="color: black;" href="/movies/<%= movie.dataValues.id %>"><%= movie.dataValues.title %></a></h1><br>
+                    <br><h1>Edit your review for <a style="color: black;" href="/movies/<%= movie.dataValues.id %>"><%= movie.dataValues.title %></a></h1><br>
                 </div>
             </div>
             <form action="/reviews/<%= review.dataValues.id %>/edit" method="POST">
